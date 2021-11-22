@@ -2,6 +2,6 @@
 
 <template>
 	<div class="h-screen flex justify-center items-center">
-		<img src="../assets/images/LOGO-GoBike.png" alt="app-logo" />
+		<img src="../assets/svgs/LOGO-GoBike.svg" alt="app-logo" />
 	</div>
 </template>

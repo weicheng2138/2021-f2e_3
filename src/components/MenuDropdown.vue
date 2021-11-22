@@ -1,3 +1,12 @@
+<script setup>
+import { ref } from "vue";
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+const selected = ref("借 / 還車");
+
+const onSelect = (selectedItem) => {
+	selected.value = selectedItem;
+};
+</script>
 <template>
 	<div class="w-56 text-right">
 		<Menu as="div" class="relative inline-block text-left">
@@ -11,9 +20,9 @@
 						py-2
 						text-sm
 						font-medium
-						text-white
-						bg-black
+						text-black
 						rounded-md
+						border border-black
 						bg-opacity-20
 						hover:bg-opacity-30
 						focus:outline-none
@@ -22,7 +31,7 @@
 						focus-visible:ring-opacity-75
 					"
 				>
-					借 / 還車
+					{{ selected }}
 					<svg
 						class="
 							-mr-1
@@ -77,9 +86,10 @@
 								:class="[
 									active
 										? 'bg-primary text-white'
-										: 'text-gray-900',
+										: 'text-primary ',
 									'group flex rounded-md items-center w-full px-2 py-2 text-sm',
 								]"
+								@click="onSelect('借 / 還車')"
 							>
 								借 / 還車
 							</button>
@@ -89,9 +99,10 @@
 								:class="[
 									active
 										? 'bg-primary text-white'
-										: 'text-gray-900',
+										: 'text-primary',
 									'group flex rounded-md items-center w-full px-2 py-2 text-sm',
 								]"
+								@click="onSelect('自行車道')"
 							>
 								自行車道
 							</button>
@@ -102,7 +113,3 @@
 		</Menu>
 	</div>
 </template>
-
-<script setup>
-import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-</script>
