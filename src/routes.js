@@ -4,9 +4,9 @@ import NotFound from "./views/NotFound.vue";
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
-	{ path: "/2021-f2e_2/", component: Home, meta: { title: "Home" } },
+	{ path: "/", component: Home, meta: { title: "Home" } },
 	{
-		path: "/2021-f2e_2/about",
+		path: "/about",
 		meta: { title: "About" },
 		component: About,
 		// example of route level code-splitting
@@ -14,5 +14,5 @@ export const routes = [
 		// which is lazy-loaded when the route is visited.
 		// component: () => import('./views/About.vue')
 	},
-	{ path: "/2021-f2e_2/:path(.*)", component: NotFound },
+	{ path: "/:path(.*)", component: NotFound },
 ];

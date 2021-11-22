@@ -22,7 +22,7 @@ const onSelect = (selectedItem) => {
 						font-medium
 						text-black
 						rounded-md
-						border border-black
+						border border-gray-300
 						bg-opacity-20
 						hover:bg-opacity-30
 						focus:outline-none
@@ -73,7 +73,7 @@ const onSelect = (selectedItem) => {
 						mt-2
 						origin-top-right
 						bg-white
-						divide-y divide-gray-100
+						divide-y divide-gray-300
 						rounded-md
 						shadow-lg
 						ring-1 ring-black ring-opacity-5
@@ -94,6 +94,8 @@ const onSelect = (selectedItem) => {
 								借 / 還車
 							</button>
 						</MenuItem>
+					</div>
+					<div class="px-1 py-1">
 						<MenuItem v-slot="{ active }">
 							<button
 								:class="[

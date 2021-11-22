@@ -5,6 +5,7 @@ import MenuDropdown from "./components/MenuDropdown.vue";
 
 let counter = ref(0);
 let landing = ref(true);
+let active = ref(true);
 
 setInterval(() => {
 	counter.value++;
@@ -31,12 +32,14 @@ setTimeout(() => {
 					lg:px-8
 				"
 			>
-				<img
-					src="@/assets/images/LOGO-Gobike-header.png"
-					alt="logo-bike-header"
-				/>
+				<a href="/" class="inline-block"
+					><img
+						src="@/assets/images/LOGO-Gobike-header.png"
+						alt="logo-bike-header"
+				/></a>
 
 				<MenuDropdown />
+
 				<!-- <h1
 					@click="counter = 0"
 					class="text-3xl font-bold leading-tight text-gray-900"
