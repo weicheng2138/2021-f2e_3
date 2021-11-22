@@ -7,8 +7,8 @@ import { createRouter, createWebHistory } from "vue-router";
 const app = createApp(App);
 
 const router = createRouter({
-	history: createWebHistory(),
-	routes,
+    history: createWebHistory("/2021-f2e_2/"),
+    routes,
 });
 
 app.use(router);
