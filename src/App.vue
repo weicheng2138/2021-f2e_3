@@ -20,23 +20,10 @@ setTimeout(() => {
 	<Landing v-if="landing" />
 	<div v-else>
 		<header class="bg-white shadow" v-if="$route.meta.title">
-			<div
-				class="
-					flex
-					justify-between
-					px-4
-					py-6
-					mx-auto
-					max-w-7xl
-					sm:px-6
-					lg:px-8
-				"
-			>
-				<a href="/" class="inline-block"
-					><img
-						src="@/assets/images/LOGO-Gobike-header.png"
-						alt="logo-bike-header"
-				/></a>
+			<div class="flex justify-between px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+				<router-link to="/" class="inline-block">
+					<img src="@/assets/images/LOGO-Gobike-header.png" alt="logo-bike-header" />
+				</router-link>
 
 				<MenuDropdown />
 
@@ -45,7 +32,7 @@ setTimeout(() => {
 					class="text-3xl font-bold leading-tight text-gray-900"
 				>
 					{{ $route.meta.title }} / {{ counter }}
-				</h1> -->
+				</h1>-->
 			</div>
 		</header>
 		<main>
