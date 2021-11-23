@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import InputDropdown from "@/components/InputDropdown.vue";
+</script>
 
 <template>
 	<div class="bg-gray-50 flex flex-col items-center gap-8 p-4">
@@ -25,31 +27,7 @@
 				</p>
 
 				<span class="text-base text-greenDark">路線名稱 或 關鍵字</span>
-				<input
-					class="
-						z-10
-						w-full
-						rounded-lg
-						border-2 border-gray-300
-						text-gray-500
-						placeholder-gray-300
-						hover:bg-gray-100
-						focus:outline-none
-						focus:ring-2
-						focus:ring-offset-2
-						focus:ring-offset-gray-100
-						focus:ring-indigo-500
-						transition
-						duration-500
-						ease-in-out
-						h-14
-						pl-5
-						mb-3
-						md:mb-0 md:mr-3
-					"
-					type="text"
-					placeholder="路線名稱"
-				/>
+				<InputDropdown />
 				<div class="flex justify-center">
 					<router-link
 						to="/businfo"
@@ -69,7 +47,7 @@
 							bg-greenRegular
 							border border-transparent
 							rounded-md
-							hover:bg-yellowLight hover:text-greenDark
+							hover:bg-greenLight hover:text-greenDark
 							focus:outline-none
 						"
 						>搜尋</router-link
