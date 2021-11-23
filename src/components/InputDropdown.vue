@@ -107,61 +107,70 @@ const setDropdownClicked = () => {
 			</svg>
 		</button>
 
-		<div
-			v-if="dropdown.opened"
-			class="
-				grid grid-cols-5
-				gap-2
-				mt-2
-				p-2
-				rounded-md
-				shadow-lg
-				bg-white
-				ring-1 ring-black ring-opacity-5
-				focus:outline-none
-				h-auto
-				overflow-hidden
-				sm:absolute sm:w-96
-			"
-			role="menu"
-			aria-orientation="vertical"
-			aria-labelledby="menu-button"
-			tabindex="-1"
+		<transition
+			enter-active-class="transition duration-100 ease-out"
+			enter-from-class="transform scale-95 opacity-0"
+			enter-to-class="transform scale-100 opacity-100"
+			leave-active-class="transition duration-75 ease-in"
+			leave-from-class="transform scale-100 opacity-100"
+			leave-to-class="transform scale-95 opacity-0"
 		>
-			<button
-				v-for="(item, index) in dropdown.panel"
-				:key="index"
-				@click="setDropdownSelected(item)"
+			<div
+				v-if="dropdown.opened"
 				class="
-					px-1
-					m-1
-					py-1
-					border-2
+					grid grid-cols-5
+					gap-2
+					mt-2
+					p-2
 					rounded-md
-					text-sm
-					hover:bg-gray-600 hover:text-white
+					shadow-lg
+					bg-white
+					ring-1 ring-black ring-opacity-5
+					focus:outline-none
+					h-auto
+					overflow-hidden
+					sm:absolute sm:w-96
 				"
-				:class="{ 'col-span-2': item === '0' }"
+				role="menu"
+				aria-orientation="vertical"
+				aria-labelledby="menu-button"
+				tabindex="-1"
 			>
-				<div v-if="item !== 'ESC'">
-					{{ item }}
-				</div>
-				<svg
-					v-else
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6 m-auto"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
+				<button
+					v-for="(item, index) in dropdown.panel"
+					:key="index"
+					@click="setDropdownSelected(item)"
+					class="
+						px-1
+						m-1
+						py-1
+						border-2
+						rounded-md
+						text-sm
+						hover:bg-gray-600 hover:text-white
+					"
+					:class="{ 'col-span-2': item === '0' }"
 				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"
-					/>
-				</svg>
-			</button>
-		</div>
+					<div v-if="item !== 'ESC'">
+						{{ item }}
+					</div>
+					<svg
+						v-else
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 m-auto"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"
+						/>
+					</svg>
+				</button>
+			</div>
+		</transition>
 	</div>
 </template>
