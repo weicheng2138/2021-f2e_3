@@ -24,7 +24,7 @@ const dropdown = reactive({
 		"紅",
 		"橘",
 		"0",
-		"ESC",
+		"backspace",
 	],
 });
 
@@ -32,7 +32,7 @@ const target = ref(null);
 onClickOutside(target, () => (dropdown.opened = false));
 
 const setDropdownSelected = (item) => {
-	if (item !== "ESC") {
+	if (item !== "backspace") {
 		dropdown.selectedItem += item;
 	} else {
 		dropdown.selectedItem = dropdown.selectedItem.slice(0, -1);
@@ -151,7 +151,7 @@ const setDropdownClicked = () => {
 					"
 					:class="{ 'col-span-2': item === '0' }"
 				>
-					<div v-if="item !== 'ESC'">
+					<div v-if="item !== 'backspace'">
 						{{ item }}
 					</div>
 					<svg
