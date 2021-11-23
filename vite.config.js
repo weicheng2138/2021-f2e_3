@@ -12,5 +12,5 @@ export default defineConfig({
 	server: {
 		open: true,
 	},
-	base: "/2021-f2e_2/",
+	base: "/2021-f2e_3/",
 });
