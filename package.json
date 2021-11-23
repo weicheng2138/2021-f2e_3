@@ -5,7 +5,7 @@
 		"dev": "vite --host",
 		"build": "vite build",
 		"serve": "vite preview",
-		"deploy": "git push -u f2e_2 main"
+		"deploy": "git push -u f2e_3 main"
 	},
 	"dependencies": {
 		"vue": "^3.2.22",
