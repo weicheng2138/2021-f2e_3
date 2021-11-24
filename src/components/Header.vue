@@ -1,5 +1,9 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const path = computed(() => route.path);
 
 const menuOpened = ref(false);
 const onOpen = () => {
@@ -69,12 +73,14 @@ const onOpen = () => {
 				"
 			>
 				<router-link
+					v-if="path !== '/businfo'"
 					to="/businfo"
 					class="inline-block font-bold text-gray-600"
 				>
 					公車動態
 				</router-link>
 				<router-link
+					v-if="path !== '/busstop'"
 					to="/busstop"
 					class="inline-block font-bold text-gray-600"
 				>
