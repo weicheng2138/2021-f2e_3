@@ -126,7 +126,7 @@ const setDropdownClicked = () => {
 				v-if="dropdown.opened"
 				class="
 					grid grid-cols-5
-					gap-2
+					gap-1
 					mt-2
 					p-2
 					rounded-md
@@ -148,9 +148,7 @@ const setDropdownClicked = () => {
 					:key="index"
 					@click="setDropdownSelected(item)"
 					class="
-						px-1
-						m-1
-						py-1
+						p-2
 						border-2
 						rounded-md
 						text-sm

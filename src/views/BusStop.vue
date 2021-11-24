@@ -4,8 +4,8 @@ import Header from "@/components/Header.vue";
 
 <template>
 	<Header />
-	<div class="flex justify-center">
-		<section class="flex flex-col gap-7 sm:flex-row sm:max-w-5xl">
+	<div class="flex justify-center px-4 sm:px-6">
+		<section class="sm:max-w-5xl">
 			<div
 				class="
 					p-2
