@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, defineProps, defineEmits } from "vue";
+import { reactive, ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 
 const dropdown = reactive({
