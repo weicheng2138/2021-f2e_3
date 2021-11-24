@@ -1,5 +1,7 @@
 <script setup>
+import { ref } from "vue";
 import InputDropdown from "@/components/InputDropdown.vue";
+const inputData = ref("8888");
 </script>
 
 <template>
@@ -27,10 +29,10 @@ import InputDropdown from "@/components/InputDropdown.vue";
 				</p>
 
 				<span class="text-base text-greenDark">路線名稱 或 關鍵字</span>
-				<InputDropdown />
+				<InputDropdown v-model:infoData="inputData" />
 				<div class="flex justify-center">
 					<router-link
-						to="/businfo"
+						:to="{ name: 'BusInfo', params: { inputData } }"
 						class="
 							inline-flex
 							items-center
@@ -76,7 +78,7 @@ import InputDropdown from "@/components/InputDropdown.vue";
 						rounded-lg
 						border-2 border-gray-300
 						text-gray-500
-						placeholder-gray-300
+						placeholder-gray-400
 						hover:bg-gray-100
 						focus:outline-none
 						focus:ring-2
@@ -92,7 +94,7 @@ import InputDropdown from "@/components/InputDropdown.vue";
 						md:mb-0 md:mr-3
 					"
 					type="text"
-					placeholder="路線名稱"
+					placeholder="請輸入站牌關鍵字"
 				/>
 				<div class="flex justify-center">
 					<router-link

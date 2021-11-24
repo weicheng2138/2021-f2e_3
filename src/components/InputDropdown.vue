@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, defineProps, defineEmits } from "vue";
 import { onClickOutside } from "@vueuse/core";
 
 const dropdown = reactive({
@@ -28,14 +28,21 @@ const dropdown = reactive({
 	],
 });
 
+const props = defineProps({
+	infoData: String,
+});
+const emit = defineEmits(["update:infoData"]);
+
 const target = ref(null);
 onClickOutside(target, () => (dropdown.opened = false));
 
 const setDropdownSelected = (item) => {
 	if (item !== "backspace") {
 		dropdown.selectedItem += item;
+		emit("update:infoData", dropdown.selectedItem);
 	} else {
 		dropdown.selectedItem = dropdown.selectedItem.slice(0, -1);
+		emit("update:infoData", dropdown.selectedItem);
 	}
 };
 
