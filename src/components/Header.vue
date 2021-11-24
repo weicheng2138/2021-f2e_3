@@ -19,7 +19,7 @@ const onOpen = () => {
 				px-4
 				py-6
 				mx-auto
-				max-w-7xl
+				max-w-5xl
 				sm:px-6
 				lg:px-8
 			"
@@ -27,7 +27,21 @@ const onOpen = () => {
 			<router-link to="/" class="z-50 inline-block">
 				<img src="@/assets/images/logo-header.svg" alt="logo-header" />
 			</router-link>
-			<button @click="onOpen()" class="z-50">
+			<div class="hidden sm:flex sm:gap-12">
+				<router-link
+					to="/businfo"
+					class="inline-block font-bold text-gray-600"
+				>
+					公車動態
+				</router-link>
+				<router-link
+					to="/busstop"
+					class="inline-block font-bold text-gray-600"
+				>
+					站牌搜尋
+				</router-link>
+			</div>
+			<button @click="onOpen()" class="z-50 sm:hidden">
 				<svg
 					v-if="menuOpened"
 					xmlns="http://www.w3.org/2000/svg"
