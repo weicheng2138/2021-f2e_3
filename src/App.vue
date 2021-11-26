@@ -22,9 +22,7 @@ setTimeout(() => {
 		<main>
 			<router-view />
 		</main>
-		<footer
-			class="bg-gray-300 flex justify-center items-center h-14 w-full p-2"
-		>
+		<footer class="md:fixed md:bottom-0 bg-gray-300 flex justify-center items-center h-14 w-full p-2">
 			<p class="text-gray-400 text-xs sm:text-xs">
 				全台公車動態時刻查詢應用服務 The F2E 3rd | Design By Winnie Tsao
 				© 2021

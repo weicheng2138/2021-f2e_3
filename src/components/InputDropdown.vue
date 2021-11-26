@@ -21,7 +21,7 @@ const dropdown = reactive({
 		"7",
 		"8",
 		"9",
-		"紅",
+		"綠",
 		"橘",
 		"0",
 		"backspace",
@@ -56,30 +56,7 @@ const setDropdownClicked = () => {
 		<!-- This example requires Tailwind CSS v2.0+ -->
 		<button
 			type="button"
-			class="
-				inline-flex
-				justify-between
-				items-center
-				px-5
-				rounded-md
-				w-full
-				h-14
-				border border-gray-300
-				shadow-sm
-				bg-white
-				text-base
-				font-medium
-				text-gray-400
-				hover:bg-gray-100
-				focus:outline-none
-				focus:ring-2
-				focus:ring-offset-2
-				focus:ring-offset-gray-100
-				focus:ring-indigo-500
-				transition
-				duration-500
-				ease-in-out
-			"
+			class="inline-flex justify-between items-center px-5 rounded-md w-full h-14 border border-gray-300 shadow-sm bg-white text-base font-medium text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 transition duration-500 ease-in-out"
 			id="menu-button"
 			aria-expanded="true"
 			aria-haspopup="true"
@@ -90,16 +67,7 @@ const setDropdownClicked = () => {
 			}}
 			<!-- Heroicon name: solid/chevron-down -->
 			<svg
-				class="
-					-mr-1
-					ml-2
-					h-5
-					w-5
-					transform
-					transition
-					duration-1000
-					ease-out
-				"
+				class="-mr-1 ml-2 h-5 w-5 transform transition duration-1000 ease-out"
 				:class="{ 'rotate-180': dropdown.opened }"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
@@ -124,20 +92,7 @@ const setDropdownClicked = () => {
 		>
 			<div
 				v-if="dropdown.opened"
-				class="
-					grid grid-cols-5
-					gap-1
-					mt-2
-					p-2
-					rounded-md
-					shadow-lg
-					bg-white
-					ring-1 ring-black ring-opacity-5
-					focus:outline-none
-					h-auto
-					overflow-hidden
-					sm:absolute sm:w-96
-				"
+				class="grid grid-cols-5 gap-1 mt-2 p-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none h-auto overflow-hidden sm:absolute sm:w-96"
 				role="menu"
 				aria-orientation="vertical"
 				aria-labelledby="menu-button"
@@ -147,18 +102,10 @@ const setDropdownClicked = () => {
 					v-for="(item, index) in dropdown.panel"
 					:key="index"
 					@click="setDropdownSelected(item)"
-					class="
-						p-2
-						border-2
-						rounded-md
-						text-sm
-						hover:bg-gray-600 hover:text-white
-					"
+					class="p-2 border-2 rounded-md text-sm hover:bg-gray-600 hover:text-white"
 					:class="{ 'col-span-2': item === '0' }"
 				>
-					<div v-if="item !== 'backspace'">
-						{{ item }}
-					</div>
+					<div v-if="item !== 'backspace'">{{ item }}</div>
 					<svg
 						v-else
 						xmlns="http://www.w3.org/2000/svg"
