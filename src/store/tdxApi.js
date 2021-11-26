@@ -4,10 +4,12 @@ import jsSHA from "jssha";
 export const state = {
 	isLoading: false,
 	busInfos: [],
+	searchTerm: null
 };
 export const actions = {
 	async getBusInfo({ commit }, payload) {
 		commit("setIsLoading", true);
+		commit("setSearchTerm", payload);
 		const BASE_URL = `https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/Taipei/${payload}?$format=JSON`;
 		const getAuthorizationHeader = () => {
 			var AppID = "5ce1ce0673f0463c9bf56da1be13a94c";
@@ -48,6 +50,10 @@ export const mutations = {
 	setIsLoading(state, payload) {
 		state.isLoading = payload;
 	},
+	setSearchTerm(state, payload) {
+		console.log(payload);
+		state.searchTerm = payload;
+	}
 };
 export const getters = {
 	getBusInfos: (state) => {
@@ -55,6 +61,9 @@ export const getters = {
 	},
 	getIsLoading: (state) => {
 		return state.isLoading;
+	},
+	getSearchTerm: (state) => {
+		return state.searchTerm;
 	},
 };
 

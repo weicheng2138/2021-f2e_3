@@ -13,6 +13,7 @@ const input = ref('')
 const store = useStore();
 const states = reactive({
 	busInfos: computed(() => store.state.tdxApi.busInfos),
+	searchTerm: computed(() => store.state.tdxApi.searchTerm),
 });
 
 const onClickSearch = () => {
@@ -89,12 +90,12 @@ onMounted(() => {
 			>
 				<h1
 					class="text-2xl text-blueRegular"
-				>搜尋：「{{ input ? input : (inputData ? inputData : "台北市全部公車") }}」</h1>
-				<section class="flex flex-wrap sm:justify-around mb-14">
+				>搜尋：「{{ states.searchTerm ? states.searchTerm : "台北市全部公車" }}」</h1>
+				<section class="flex flex-wrap gap-4 mb-14">
 					<button
 						v-for="busInfo in states.busInfos"
 						:key="busInfo.RouteUID"
-						class="w-[210px] p-4 m-1 flex flex-col items-start rounded-lg hover:bg-blueLight"
+						class="w-[230px] p-4 flex flex-col rounded-lg hover:bg-blueLight"
 					>
 						<h4 class="text-gray-500">{{ busInfo.RouteName.Zh_tw }}</h4>
 						<p
