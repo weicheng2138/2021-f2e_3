@@ -69,7 +69,7 @@ onMounted(() => {
                     >
                         <h1 class="inline-block">{{ detail.StopName.Zh_tw }}</h1>
                         <div class="flex items-center">
-                            <h2>狀態</h2>
+                            <h2 :class="{ 'text-redRegular': index == 2 }">狀態</h2>
                             <svg v-if="index === 2" height="40" width="40">
                                 <circle
                                     cx="20"
