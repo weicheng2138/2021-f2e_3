@@ -65,9 +65,13 @@ onMounted(() => {
                     <button
                         v-for="(detail, index) in states.busInfoDetails"
                         :key="index"
-                        class="p-4 font-bold text-base text-gray-500"
+                        class="p-4 font-bold text-base text-gray-500 w-full flex justify-between hover:bg-greenLight"
                     >
-                        <h1>{{ detail.StopName.Zh_tw }}</h1>
+                        <h1 class="inline-block">{{ detail.StopName.Zh_tw }}</h1>
+                        <div>
+                            <h2>狀態</h2>
+                            <p>dot</p>
+                        </div>
                     </button>
                 </div>
             </div>
