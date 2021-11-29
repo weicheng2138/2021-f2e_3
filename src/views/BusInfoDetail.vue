@@ -49,7 +49,7 @@ onMounted(() => {
         </svg>
         回到「公車動態」
     </router-link>
-    <BusTabs />
+    <!-- <BusTabs /> -->
     <div v-if="props.routeName" class="flex flex-col justify-center px-4">
         <section class="w-full sm:max-w-5xl md:flex md:gap-8">
             <div>
