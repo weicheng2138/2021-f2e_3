@@ -6,16 +6,25 @@ import { useStore } from "vuex";
 const props = defineProps({
     routeName: String,
 });
+const STOP_STATUS = {
+    NOT_IN_PROCESS: "今日未營運",
+    NOT_LAUNCH: "尚未發車",
+    LAST_PASSED: "末班已過",
+    APPROACHING: "將到站"
+}
 
 const store = useStore();
 const states = reactive({
-    busInfoDetails: computed(() => store.state.tdxApi.busInfoDetails),
+    busInfoStops: computed(() => store.state.tdxApi.busInfoStops),
+    busInfoStatus: computed(() => store.state.tdxApi.busInfoStatus),
+    details: computed(() => store.getters["tdxApi/getStopsAndStatus"]),
 });
 
 onMounted(() => {
     if (props.routeName) {
         // console.log(props.routeName);
-        store.dispatch('tdxApi/getBusInfoDetail', props.routeName)
+        store.dispatch('tdxApi/getBusInfoDetail', props.routeName);
+        // console.log(store.getters["tdxApi/getBusInfos"]);
     }
 
 });
@@ -63,18 +72,22 @@ onMounted(() => {
                 </header>
                 <div class="flex flex-col items-start">
                     <button
-                        v-for="(detail, index) in states.busInfoDetails.Stops"
+                        v-for="(detail, index) in states.details"
                         :key="index"
                         class="p-4 font-bold text-base rounded-lg text-gray-500 w-full flex justify-between items-center hover:bg-greenLight"
                     >
                         <h1 class="inline-block">{{ detail.StopName.Zh_tw }}</h1>
                         <div class="flex items-center">
-                            <h2 :class="{ 'text-redRegular': index == 2 }">狀態</h2>
-                            <svg v-if="index === 2" height="40" width="40">
+                            <h2
+                                v-if="detail.containsSequenceId"
+                                :class="{ 'text-redRegular': detail.containsSequenceId }"
+                            >將到站</h2>
+                            <h2 v-else>未到站</h2>
+                            <svg v-if="detail.containsSequenceId" height="40" width="40">
                                 <circle
                                     cx="20"
                                     cy="20"
-                                    r="10"
+                                    r="8"
                                     stroke="#FA728B"
                                     stroke-width="2"
                                     fill="transparent"
@@ -82,7 +95,7 @@ onMounted(() => {
                                 <circle
                                     cx="20"
                                     cy="20"
-                                    r="4"
+                                    r="2"
                                     stroke="#FA728B"
                                     stroke-width="2"
                                     fill="#FA728B"
