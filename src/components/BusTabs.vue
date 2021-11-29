@@ -1,45 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive, computed } from 'vue';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import { useStore } from "vuex";
 
-const props = defineProps({
-    routeName: String,
+const store = useStore();
+const states = reactive({
+    details: computed(() => store.getters["tdxApi/getStopsAndStatus"]),
 });
-
-let categories = ref({
-    Recent: [
-        {
-            id: 1,
-            title: 'Does drinking coffee make you smarter?',
-            date: '5h ago',
-            commentCount: 5,
-            shareCount: 2,
-        },
-        {
-            id: 2,
-            title: "So you've bought coffee... now what?",
-            date: '2h ago',
-            commentCount: 3,
-            shareCount: 2,
-        },
-    ],
-    Popular: [
-        {
-            id: 1,
-            title: 'Is tech making coffee better or worse?',
-            date: 'Jan 7',
-            commentCount: 29,
-            shareCount: 16,
-        },
-        {
-            id: 2,
-            title: 'The most innovative things happening in coffee',
-            date: 'Mar 19',
-            commentCount: 24,
-            shareCount: 12,
-        },
-    ],
-})
 
 
 </script>
@@ -49,9 +16,9 @@ let categories = ref({
         <TabGroup>
             <TabList class="flex p-1 space-x-1 bg-blue-900/20 rounded-xl">
                 <Tab
-                    v-for="category in Object.keys(categories)"
+                    v-for="detail in Object.keys(states.details)"
                     as="template"
-                    :key="category"
+                    :key="detail"
                     v-slot="{ selected }"
                 >
                     <button
@@ -62,34 +29,24 @@ let categories = ref({
                                 ? 'bg-white shadow'
                                 : 'text-blue-100 hover:bg-white/[0.12] hover:text-white',
                         ]"
-                    >{{ category }}</button>
+                    >{{ detail == 0 ? "順向" : "逆向" }}</button>
                 </Tab>
             </TabList>
 
             <TabPanels class="mt-2">
                 <TabPanel
-                    v-for="(posts, idx) in Object.values(categories)"
+                    v-for="(directions, idx) in Object.values(states.details)"
                     :key="idx"
                     :class="[
                         'bg-white rounded-xl p-3',
                         'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60',
                     ]"
                 >
-                    <ul>
-                        <li
-                            v-for="post in posts"
-                            key="post.id"
-                            class="relative p-3 rounded-md hover:bg-coolGray-100"
-                        >
-                            <h3 class="text-sm font-medium leading-5">{{ post.title }}</h3>
-
-                            <ul
-                                class="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500"
-                            >
-                                <li>{{ post.date }}</li>
-                            </ul>/>
-                        </li>
-                    </ul>
+                    <!-- {{ directions }} -->
+                    <div v-for="direction in directions">
+                        <h1>{{ direction.StopName.Zh_tw }}</h1>
+                        <h1>{{ direction.containsSequenceId }}</h1>
+                    </div>
                 </TabPanel>
             </TabPanels>
         </TabGroup>

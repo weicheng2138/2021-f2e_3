@@ -3,7 +3,6 @@ import { reactive, onMounted, computed } from 'vue';
 import Header from "@/components/Header.vue";
 import BusTabs from "@/components/BusTabs.vue";
 import { useStore } from "vuex";
-import Tabs from '@/components/BusTabs.vue';
 
 const props = defineProps({
     routeName: String,
@@ -50,7 +49,7 @@ onMounted(() => {
         </svg>
         回到「公車動態」
     </router-link>
-    <!-- <BusTabs /> -->
+    <BusTabs />
     <div v-if="props.routeName" class="flex flex-col justify-center px-4">
         <section class="w-full sm:max-w-5xl md:flex md:gap-8">
             <div>
@@ -75,7 +74,7 @@ onMounted(() => {
                 </header>
                 <div class="flex flex-col items-start">
                     <button
-                        v-for="(detail, index) in states.details"
+                        v-for="(detail, index) in states.details[1]"
                         :key="index"
                         class="p-4 text-base rounded-lg text-gray-500 w-full flex justify-between items-center hover:bg-greenLight"
                     >
