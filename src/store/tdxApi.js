@@ -67,9 +67,9 @@ export const actions = {
 			const response = await axios.get(BASE_URL, {
 				headers: getAuthorizationHeader(),
 			});
-			commit("setBusInfoDetails", response.data[0].Stops);
+			commit("setBusInfoDetails", response.data[0]);
 			commit("setIsLoading", false);
-			console.log(response.data[0].Stops);
+			console.log(response.data[0]);
 		} catch (error) {
 			commit("setIsLoading", false);
 			throw new Error(error);

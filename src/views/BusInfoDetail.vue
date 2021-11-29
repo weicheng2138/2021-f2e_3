@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
     <Header />
-    <router-link to="/businfo" class="inline-block pl-4 pb-2 text-base text-gray-400">
+    <router-link to="/businfo" class="inline-block pl-3 pb-2 text-base text-gray-400">
         <svg
             class="inline-block h-5 w-5 transform transition duration-1000 ease-out rotate-90"
             xmlns="http://www.w3.org/2000/svg"
@@ -63,14 +63,41 @@ onMounted(() => {
                 </header>
                 <div class="flex flex-col items-start">
                     <button
-                        v-for="(detail, index) in states.busInfoDetails"
+                        v-for="(detail, index) in states.busInfoDetails.Stops"
                         :key="index"
-                        class="p-4 font-bold text-base text-gray-500 w-full flex justify-between hover:bg-greenLight"
+                        class="p-4 font-bold text-base rounded-lg text-gray-500 w-full flex justify-between items-center hover:bg-greenLight"
                     >
                         <h1 class="inline-block">{{ detail.StopName.Zh_tw }}</h1>
-                        <div>
+                        <div class="flex items-center">
                             <h2>狀態</h2>
-                            <p>dot</p>
+                            <svg v-if="index === 2" height="40" width="40">
+                                <circle
+                                    cx="20"
+                                    cy="20"
+                                    r="10"
+                                    stroke="#FA728B"
+                                    stroke-width="2"
+                                    fill="transparent"
+                                />
+                                <circle
+                                    cx="20"
+                                    cy="20"
+                                    r="4"
+                                    stroke="#FA728B"
+                                    stroke-width="2"
+                                    fill="#FA728B"
+                                />
+                            </svg>
+                            <svg v-else height="40" width="40">
+                                <circle
+                                    cx="20"
+                                    cy="20"
+                                    r="6"
+                                    stroke="gray"
+                                    stroke-width="2"
+                                    fill="transparent"
+                                />
+                            </svg>
                         </div>
                     </button>
                 </div>
