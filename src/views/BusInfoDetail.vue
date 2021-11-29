@@ -77,13 +77,36 @@ onMounted(() => {
                         class="p-4 font-bold text-base rounded-lg text-gray-500 w-full flex justify-between items-center hover:bg-greenLight"
                     >
                         <h1 class="inline-block">{{ detail.StopName.Zh_tw }}</h1>
-                        <div class="flex items-center">
+                        <div class="relative flex items-center">
                             <h2
                                 v-if="detail.containsSequenceId"
                                 :class="{ 'text-redRegular': detail.containsSequenceId }"
                             >將到站</h2>
                             <h2 v-else>未到站</h2>
                             <svg v-if="detail.containsSequenceId" height="40" width="40">
+                                <circle
+                                    cx="20"
+                                    cy="20"
+                                    r="8"
+                                    stroke="#FA728B"
+                                    stroke-width="2"
+                                    fill="transparent"
+                                />
+                                <circle
+                                    cx="20"
+                                    cy="20"
+                                    r="2"
+                                    stroke="#FA728B"
+                                    stroke-width="2"
+                                    fill="#FA728B"
+                                />
+                            </svg>
+                            <svg
+                                v-if="detail.containsSequenceId"
+                                height="40"
+                                width="40"
+                                class="absolute right-0 inline-flex animate-ping"
+                            >
                                 <circle
                                     cx="20"
                                     cy="20"

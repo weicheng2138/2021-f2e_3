@@ -70,7 +70,7 @@ export const actions = {
 				headers: getAuthorizationHeader(),
 			});
 			commit("setBusInfoStops", stopsResponse.data[0].Stops);
-			console.log(stopsResponse.data[0].Stops);
+			// console.log(stopsResponse.data[0].Stops);
 
 			const statusResponse = await axios.get(STATUS_URL, {
 				headers: getAuthorizationHeader(),
@@ -78,7 +78,7 @@ export const actions = {
 			commit("setBusInfoStatus", statusResponse.data);
 
 			commit("setIsLoading", false);
-			console.log(statusResponse.data);
+			// console.log(statusResponse.data);
 		} catch (error) {
 			commit("setIsLoading", false);
 			throw new Error(error);
@@ -115,13 +115,10 @@ export const getters = {
 	},
 	getStopsAndStatus: (state) => {
 		if(state.busInfoStops.length && state.busInfoStatus.length && !state.isLoading) {
-			
 			let result = state.busInfoStops.map((stop) => {
 				let containsSequenceId = state.busInfoStatus.some((status)=> {
 					return stop.StopSequence == status.StopSequence
 				})
-				console.log(containsSequenceId);
-
 				return {
 					StopName: stop.StopName,
 					containsSequenceId: containsSequenceId
