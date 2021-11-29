@@ -70,7 +70,7 @@ export const actions = {
 				headers: getAuthorizationHeader(),
 			});
 			commit("setBusInfoStops", stopsResponse.data[0].Stops);
-			// console.log(stopsResponse.data[0].Stops);
+			console.log(stopsResponse.data[0].Stops);
 
 			const statusResponse = await axios.get(STATUS_URL, {
 				headers: getAuthorizationHeader(),
@@ -78,7 +78,7 @@ export const actions = {
 			commit("setBusInfoStatus", statusResponse.data);
 
 			commit("setIsLoading", false);
-			// console.log(statusResponse.data);
+			console.log(statusResponse.data);
 		} catch (error) {
 			commit("setIsLoading", false);
 			throw new Error(error);
