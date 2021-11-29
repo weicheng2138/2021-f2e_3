@@ -92,16 +92,17 @@ onMounted(() => {
 					class="text-2xl text-blueRegular"
 				>搜尋：「{{ states.searchTerm ? states.searchTerm : "台北市全部公車" }}」</h1>
 				<section class="flex flex-wrap gap-4 mb-14">
-					<button
+					<router-link
 						v-for="busInfo in states.busInfos"
 						:key="busInfo.RouteUID"
 						class="w-[230px] p-4 flex flex-col rounded-lg hover:bg-blueLight"
+						:to="{ name: 'BusInfoDetail', params: { routeName: busInfo.RouteName.Zh_tw } }"
 					>
 						<h4 class="text-gray-500">{{ busInfo.RouteName.Zh_tw }}</h4>
 						<p
 							class="text-gray-400"
 						>{{ busInfo.DepartureStopNameZh }} - {{ busInfo.DestinationStopNameZh }}</p>
-					</button>
+					</router-link>
 				</section>
 			</div>
 		</section>
