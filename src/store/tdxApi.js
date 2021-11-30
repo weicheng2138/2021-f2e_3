@@ -78,7 +78,7 @@ export const actions = {
             commit("setBusInfoStatus", statusResponse.data);
 
             commit("setIsLoading", false);
-            // console.log(statusResponse.data);
+            console.log(statusResponse.data);
         } catch (error) {
             commit("setIsLoading", false);
             throw new Error(error);
@@ -116,8 +116,7 @@ export const getters = {
     getStopsAndStatus: (state) => {
         if (
             state.busInfoStops.length &&
-            state.busInfoStatus.length &&
-            !state.isLoading
+            state.busInfoStatus.length 
         ) {
             let direction0 = state.busInfoStops.map((stop) => {
                 let containsSequenceId = state.busInfoStatus.some((status) => {
@@ -144,10 +143,21 @@ export const getters = {
                 };
             });
             console.log([direction0, direction1]);
-            return [direction0, direction1.reverse()];
+            return {
+                busAvalibility: true,
+                routeStatus: [direction0, direction1.reverse()]
+            };
         }
 
-        return [[], []];
+        let direction0 = state.busInfoStops.map((stop) => {
+                return {
+                    StopName: stop.StopName,
+                };
+            });
+        return {
+            busAvalibility: false,
+            routeStatus:[direction0, direction0]
+        };
     },
 };
 

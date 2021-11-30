@@ -11,7 +11,6 @@ const store = useStore();
 const states = reactive({
     details: computed(() => store.getters["tdxApi/getStopsAndStatus"]),
 });
-const selected = ref(0);
 
 
 </script>
@@ -21,7 +20,7 @@ const selected = ref(0);
         <TabGroup :defaultIndex="0">
             <TabList class="flex border-b-4 border-redLight">
                 <Tab
-                    v-for="direction in Object.keys(states.details)"
+                    v-for="direction in Object.keys(states.details.routeStatus)"
                     as="template"
                     :key="direction"
                     v-slot="{ selected }"
@@ -40,19 +39,13 @@ const selected = ref(0);
 
             <TabPanels class="mt-2">
                 <TabPanel
-                    v-for="(details, idx) in Object.values(states.details)"
+                    v-for="(details, idx) in Object.values(states.details.routeStatus)"
                     :key="idx"
                     :class="[
                         'bg-white rounded-xl p-3',
                         'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60',
                     ]"
                 >
-                    <!-- {{ directions }} -->
-                    <!-- <div v-for="direction in directions">
-                        <h1>{{ direction.StopName.Zh_tw }}</h1>
-                        <h1>{{ direction.containsSequenceId }}</h1>
-                    </div>-->
-
                     <div v-if="props.routeName" class="flex flex-col justify-center px-4">
                         <section class="w-full sm:max-w-5xl md:flex md:gap-8">
                             <div>
@@ -86,10 +79,17 @@ const selected = ref(0);
                                         >{{ detail.StopName.Zh_tw }}</h1>
                                         <div class="relative flex items-center">
                                             <h2
-                                                v-if="detail.containsSequenceId"
-                                                :class="{ 'text-redRegular': detail.containsSequenceId }"
-                                            >將到站</h2>
-                                            <h2 v-else>未到站</h2>
+                                                v-if="!states.details.busAvalibility"
+                                                class="text-gray-400"
+                                            >尚未發車</h2>
+                                            <div v-else>
+                                                <h2
+                                                    v-if="detail.containsSequenceId"
+                                                    :class="{ 'text-redRegular': detail.containsSequenceId }"
+                                                >將到站</h2>
+                                                <h2 v-else>未到站</h2>
+                                            </div>
+
                                             <svg
                                                 v-if="detail.containsSequenceId"
                                                 height="40"
