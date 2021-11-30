@@ -156,7 +156,7 @@ export const getters = {
             });
         return {
             busAvalibility: false,
-            routeStatus:[direction0, direction0.reverse()]
+            routeStatus:[direction0, direction0.slice().reverse()]
         };
     },
 };
