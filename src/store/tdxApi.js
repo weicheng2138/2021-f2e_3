@@ -144,7 +144,7 @@ export const getters = {
                 };
             });
             console.log([direction0, direction1]);
-            return [direction0, direction1];
+            return [direction0, direction1.reverse()];
         }
 
         return [[], []];
