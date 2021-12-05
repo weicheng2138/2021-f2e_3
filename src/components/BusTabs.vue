@@ -72,12 +72,12 @@ const states = reactive({
                                     <button
                                         v-for="(detail, index) in details"
                                         :key="index"
-                                        class="p-4 text-base rounded-lg text-gray-500 w-full flex justify-between items-center hover:bg-greenLight"
+                                        class="relative p-4 text-base rounded-lg text-gray-500 w-full flex justify-between items-center hover:bg-greenLight"
                                     >
                                         <h1
-                                            class="inline-block font-bold"
+                                            class="z-20 inline-block font-bold"
                                         >{{ detail.StopName.Zh_tw }}</h1>
-                                        <div class="relative flex items-center">
+                                        <div class="z-20 relative flex items-center">
                                             <h2
                                                 v-if="!states.details.busAvalibility"
                                                 class="text-gray-400"
@@ -89,63 +89,67 @@ const states = reactive({
                                                 >將到站</h2>
                                                 <h2 v-else>未到站</h2>
                                             </div>
-
-                                            <svg
-                                                v-if="detail.containsSequenceId"
-                                                height="40"
-                                                width="40"
-                                            >
-                                                <circle
-                                                    cx="20"
-                                                    cy="20"
-                                                    r="8"
-                                                    stroke="#FA728B"
-                                                    stroke-width="2"
-                                                    fill="transparent"
-                                                />
-                                                <circle
-                                                    cx="20"
-                                                    cy="20"
-                                                    r="2"
-                                                    stroke="#FA728B"
-                                                    stroke-width="2"
-                                                    fill="#FA728B"
-                                                />
-                                            </svg>
-                                            <svg
-                                                v-if="detail.containsSequenceId"
-                                                height="40"
-                                                width="40"
-                                                class="absolute right-0 inline-flex animate-ping"
-                                            >
-                                                <circle
-                                                    cx="20"
-                                                    cy="20"
-                                                    r="8"
-                                                    stroke="#FA728B"
-                                                    stroke-width="2"
-                                                    fill="transparent"
-                                                />
-                                                <circle
-                                                    cx="20"
-                                                    cy="20"
-                                                    r="2"
-                                                    stroke="#FA728B"
-                                                    stroke-width="2"
-                                                    fill="#FA728B"
-                                                />
-                                            </svg>
-                                            <svg v-else height="40" width="40">
-                                                <circle
-                                                    cx="20"
-                                                    cy="20"
-                                                    r="6"
-                                                    stroke="gray"
-                                                    stroke-width="2"
-                                                    fill="transparent"
-                                                />
-                                            </svg>
+                                            <div class="relative flex bg-white">
+                                                <svg
+                                                    v-if="detail.containsSequenceId"
+                                                    height="40"
+                                                    width="40"
+                                                >
+                                                    <circle
+                                                        cx="20"
+                                                        cy="20"
+                                                        r="8"
+                                                        stroke="#FA728B"
+                                                        stroke-width="2"
+                                                        fill="transparent"
+                                                    />
+                                                    <circle
+                                                        cx="20"
+                                                        cy="20"
+                                                        r="2"
+                                                        stroke="#FA728B"
+                                                        stroke-width="2"
+                                                        fill="#FA728B"
+                                                    />
+                                                </svg>
+                                                <svg
+                                                    v-if="detail.containsSequenceId"
+                                                    height="40"
+                                                    width="40"
+                                                    class="absolute right-0 inline-flex animate-ping"
+                                                >
+                                                    <circle
+                                                        cx="20"
+                                                        cy="20"
+                                                        r="8"
+                                                        stroke="#FA728B"
+                                                        stroke-width="2"
+                                                        fill="transparent"
+                                                    />
+                                                    <circle
+                                                        cx="20"
+                                                        cy="20"
+                                                        r="2"
+                                                        stroke="#FA728B"
+                                                        stroke-width="2"
+                                                        fill="#FA728B"
+                                                    />
+                                                </svg>
+                                                <svg v-else height="40" width="40">
+                                                    <circle
+                                                        cx="20"
+                                                        cy="20"
+                                                        r="6"
+                                                        stroke="gray"
+                                                        stroke-width="2"
+                                                        fill="transparent"
+                                                    />
+                                                </svg>
+                                            </div>
                                         </div>
+                                        <span
+                                            class="z-10 absolute w-[2px] h-full bg-gray-500 right-[35px]"
+                                        ></span>
                                     </button>
                                 </div>
                             </div>
