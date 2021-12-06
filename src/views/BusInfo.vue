@@ -43,7 +43,7 @@ onMounted(() => {
 						:disabled="store.state.tdxApi.isLoading"
 						:class="{ 'cursor-not-allowed': store.state.tdxApi.isLoading }"
 						@click="onClickSearch()"
-						class="inline-flex items-center justify-center w-3/5 py-4 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-greenRegular border border-transparent rounded-md hover:bg-greenLight hover:text-greenDark focus:outline-none"
+						class="inline-flex items-center justify-center w-3/5 py-4 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-greenRegular border border-transparent rounded-md hover:bg-greenLight hover:text-greenDark focus:outline-none active:bg-red-300"
 					>
 						<span v-if="!store.state.tdxApi.isLoading">搜尋</span>
 						<svg
