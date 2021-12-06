@@ -7,4 +7,5 @@
 
 body {
 	@apply font-notoTC;
+	-webkit-tap-highlight-color: transparent;
 }
